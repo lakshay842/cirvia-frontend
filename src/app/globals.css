@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8fc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --primary: #6d5efc;
+  --accent: #8b5cf6;
+  --muted: #eef0fb;
+  --muted-foreground: #64748b;
+  --border: rgba(15, 23, 42, 0.08);
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --hero-glow: #ede9fe;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --surface: #1e293b;
+  --primary: #7c6ff7;
+  --accent: #a78bfa;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: rgba(248, 250, 252, 0.1);
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --hero-glow: #1e1b4b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-foreground: #ffffff;
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-hero-glow: var(--hero-glow);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-plus-jakarta);
+  --radius-card: 24px;
+  --radius-button: 18px;
+  --shadow-card: 0 8px 30px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 16px 40px rgba(109, 94, 252, 0.12);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
